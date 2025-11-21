@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - MRM Mobile Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+         <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                MRM Mobile Shop
+            </a>
+           <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="cart.html">Cart <span class="cart-count-nav">0</span></a></li>
+    </ul>
+</nav>
+        </div>
+    </header>
+
+    <!-- Products Page -->
+    <div class="products-page">
+        <div class="container">
+            <h2 class="section-title">All Products</h2>
+            
+            <div class="products-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search products...">
+                </div>
+                <div class="filter-controls">
+                    <select class="filter-select" id="brandFilter">
+                        <option value="all">All Brands</option>
+                        <option value="apple">Apple</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="xiaomi">Xiaomi</option>
+                        <option value="oppo">Oppo</option>
+                        <option value="vivo">Vivo</option>
+                        <option value="realme">Realme</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="products-grid" id="allProducts">
+                <!-- Products loaded by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MRM Mobile Shop</h3>
+                    <p>Your premier destination for smartphones</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/01611134095"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> খুলনা, বাগেরহাট</p>
+                    <p><i class="fas fa-phone"></i> 01611134095</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 MRM Mobile Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="js/products.js"></script>
+</body>
+</html>

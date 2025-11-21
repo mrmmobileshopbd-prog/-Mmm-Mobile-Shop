@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Videos - MRM Mobile Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        /* Enhanced Videos Page Styles */
+        .videos-hero {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(192, 192, 192, 0.05)), 
+                        url('../images/videos-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .videos-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(18, 18, 18, 0.9), rgba(10, 10, 10, 0.8));
+            z-index: 1;
+        }
+
+        .videos-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .videos-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .videos-hero p {
+            font-size: 1.3rem;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .videos-search-section {
+            background: var(--darker-bg);
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box-enhanced {
+            width: 100%;
+            padding: 18px 60px 18px 25px;
+            background: var(--card-bg);
+            border: 2px solid transparent;
+            border-radius: 50px;
+            color: var(--light-text);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-box-enhanced:focus {
+            border-color: var(--gold);
+            outline: none;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .videos-content {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .video-categories-enhanced {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .category-btn-enhanced {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--card-bg), var(--darker-bg));
+            border: 2px solid transparent;
+            border-radius: 25px;
+            color: var(--light-text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .category-btn-enhanced:hover::before {
+            left: 100%;
+        }
+
+        .category-btn-enhanced:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .category-btn-enhanced.active {
+            background: linear-gradient(135deg, var(--gold), #e6c34f);
+            color: var(--dark-bg);
+            border-color: var(--gold);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .category-icon {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .videos-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .video-card-enhanced {
+            background: linear-gradient(135deg, var(--card-bg), var(--darker-bg));
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .video-card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .video-card-enhanced:hover::before {
+            opacity: 1;
+        }
+
+        .video-card-enhanced:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .video-thumbnail-enhanced {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail-enhanced img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .video-card-enhanced:hover .video-thumbnail-enhanced img {
+            transform: scale(1.1);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-card-enhanced:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .play-button-enhanced {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(212, 175, 55, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-bg);
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-card-enhanced:hover .play-button-enhanced {
+            background: var(--gold);
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .video-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--gold);
+            color: var(--dark-bg);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .video-duration-enhanced {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .video-info-enhanced {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .video-title-enhanced {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--light-text);
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .video-description-enhanced {
+            color: var(--gray-text);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .video-meta-enhanced {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--gray-text);
+        }
+
+        .video-stats {
+            display: flex;
+            gap: 15px;
+        }
+
+        .video-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .video-category-tag {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .featured-videos {
+            margin-top: 80px;
+        }
+
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .view-all-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .view-all-btn:hover {
+            background: var(--gold);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+
+        .video-modal-enhanced {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 4000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .video-modal-content-enhanced {
+            background: var(--card-bg);
+            width: 95%;
+            max-width: 1100px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: modalAppear 0.3s ease;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-header-enhanced {
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--darker-bg), var(--card-bg));
+        }
+
+        .modal-header-enhanced h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 0;
+        }
+
+        .close-modal-enhanced {
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal-enhanced:hover {
+            color: var(--gold);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-body-enhanced {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 0;
+        }
+
+        .video-player-enhanced {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            background: #000;
+        }
+
+        .video-player-enhanced iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-details-sidebar {
+            padding: 30px;
+            background: var(--darker-bg);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .video-detail-item {
+            margin-bottom: 25px;
+        }
+
+        .video-detail-item h3 {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .video-detail-item p {
+            color: var(--gray-text);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .video-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--gray-text);
+        }
+
+        .spec-item i {
+            color: var(--gold);
+            width: 16px;
+        }
+
+        .related-videos {
+            margin-top: 80px;
+        }
+
+        .related-videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            color: var(--gold);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(212, 175, 55, 0.3);
+            border-left: 4px solid var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                MRM Mobile Shop
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="videos.html" class="active">Videos</a></li>
+                    <li><a href="cart.html">Cart <span class="cart-count-nav">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Videos Hero Section -->
+    <section class="videos-hero">
+        <div class="container videos-hero-content">
+            <h1>Mobile Video Gallery</h1>
+            <p>Watch detailed reviews, unboxing videos, and expert comparisons of the latest smartphones. Make informed decisions with our comprehensive video collection.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Videos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">25K+</span>
+                    <span class="stat-label">Views</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.8</span>
+                    <span class="stat-label">Rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="videos-search-section">
+        <div class="container">
+            <div class="search-container">
+                <input type="text" class="search-box-enhanced" id="videoSearch" placeholder="Search videos by title, brand, or feature...">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Videos Content -->
+    <section class="videos-content">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Videos</h2>
+                <p class="section-subtitle">Explore our curated collection of mobile reviews, tutorials, and comparisons to find your perfect device</p>
+            </div>
+
+            <!-- Video Categories -->
+            <div class="video-categories-enhanced">
+                <button class="category-btn-enhanced active" data-category="all">
+                    <i class="fas fa-th-large category-icon"></i>All Videos
+                </button>
+                <button class="category-btn-enhanced" data-category="reviews">
+                    <i class="fas fa-star category-icon"></i>Reviews
+                </button>
+                <button class="category-btn-enhanced" data-category="unboxing">
+                    <i class="fas fa-box-open category-icon"></i>Unboxing
+                </button>
+                <button class="category-btn-enhanced" data-category="comparison">
+                    <i class="fas fa-balance-scale category-icon"></i>Comparison
+                </button>
+                <button class="category-btn-enhanced" data-category="tips">
+                    <i class="fas fa-lightbulb category-icon"></i>Tips & Tricks
+                </button>
+                <button class="category-btn-enhanced" data-category="camera">
+                    <i class="fas fa-camera category-icon"></i>Camera Tests
+                </button>
+            </div>
+
+            <!-- Videos Grid -->
+            <div class="videos-grid-enhanced" id="videosGrid">
+                <!-- Videos will be loaded by JavaScript -->
+            </div>
+
+            <!-- Featured Videos Section -->
+            <section class="featured-videos">
+                <div class="featured-header">
+                    <h2 class="section-title">Latest Uploads</h2>
+                    <a href="#" class="view-all-btn">View All Videos</a>
+                </div>
+                <div class="videos-grid-enhanced" id="featuredVideos">
+                    <!-- Featured videos will be loaded by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal-enhanced" id="videoModal">
+        <div class="video-modal-content-enhanced">
+            <div class="modal-header-enhanced">
+                <h2 id="videoModalTitle">Video Title</h2>
+                <button class="close-modal-enhanced" id="closeVideoModal">&times;</button>
+            </div>
+            <div class="modal-body-enhanced">
+                <div class="video-player-enhanced" id="videoPlayer">
+                    <!-- Video will be loaded here -->
+                </div>
+                <div class="video-details-sidebar">
+                    <div class="video-detail-item">
+                        <h3>Description</h3>
+                        <p id="videoModalDescription">Video description will appear here...</p>
+                    </div>
+                    <div class="video-detail-item">
+                        <h3>Specifications</h3>
+                        <div class="video-specs" id="videoSpecs">
+                            <!-- Specifications will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="video-detail-item">
+                        <h3>Video Details</h3>
+                        <div class="spec-item">
+                            <i class="far fa-clock"></i>
+                            <span id="videoModalDuration">Duration: 15:30</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="far fa-calendar"></i>
+                            <span id="videoModalDate">Uploaded: Jan 15, 2024</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="far fa-eye"></i>
+                            <span id="videoModalViews">Views: 2.4K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/01611134095" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MRM Mobile Shop</h3>
+                    <p>Your premier destination for smartphones</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/01611134095"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> খুলনা, বাগেরহাট</p>
+                    <p><i class="fas fa-phone"></i> 01611134095</p>
+                </div>
+                 <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                MRM Mobile Shop
+            </a>
+            <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="cart.html">Cart <span class="cart-count-nav">0</span></a></li>
+    </ul>
+</nav>
+        </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 MRM Mobile Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/videos.js"></script>
+</body>
+</html>

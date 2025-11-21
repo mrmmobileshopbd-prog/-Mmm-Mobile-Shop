@@ -1,0 +1,143 @@
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .cart-checkout-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .checkout-section {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin: 20px 0;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .products-controls {
+        flex-direction: column;
+    }
+
+    .search-box {
+        min-width: 100%;
+    }
+    
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cart-item-image {
+        margin-bottom: 15px;
+    }
+    
+    .cart-item-controls {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+    
+    .cart-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .cart-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .order-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-title {
+        font-size: 28px;
+    }
+    
+    .cart-section, .checkout-section {
+        padding: 20px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Videos Page Responsive */
+@media (max-width: 768px) {
+    .videos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    .video-categories {
+        gap: 10px;
+    }
+    
+    .category-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .video-modal-content {
+        width: 95%;
+    }
+    
+    .video-meta {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .videos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-thumbnail {
+        height: 180px;
+    }
+    
+    .page-subtitle {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+}

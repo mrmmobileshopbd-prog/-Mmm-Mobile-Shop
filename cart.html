@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - MRM Mobile Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                MRM Mobile Shop
+            </a>
+            <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="cart.html">Cart <span class="cart-count-nav">0</span></a></li>
+    </ul>
+</nav>
+        </div>
+    </header>
+
+    <!-- Cart Page -->
+    <div class="container">
+        <h1 class="page-title">Your Shopping Cart</h1>
+        
+        <div class="cart-checkout-container">
+            <!-- Cart Section -->
+            <section class="cart-section">
+                <h2 class="section-title">Cart Items</h2>
+                
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items loaded by JavaScript -->
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">৳0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="shipping">৳0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total">৳0.00</span>
+                    </div>
+                </div>
+                
+                <div class="cart-actions">
+                    <a href="products.html" class="btn btn-outline">Continue Shopping</a>
+                    <button class="btn" id="checkoutBtn">Order Confirm</button>
+                </div>
+            </section>
+            
+            <!-- Delivery Info -->
+            <section class="checkout-section">
+                <h2 class="section-title">Delivery Information</h2>
+                <div class="delivery-info">
+                    <p><strong>Address:</strong> খুলনা, বাগেরহাট</p>
+                    <p><strong>Delivery Charge:</strong> 130৳ (whole Bangladesh), 70৳ (Bagherhat)</p>
+                    <p><strong>Delivery Time:</strong> within Bagherhat 1 day, other districts 1–2 days</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MRM Mobile Shop</h3>
+                    <p>Your premier destination for smartphones</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/01611134095"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> খুলনা, বাগেরহাট</p>
+                    <p><i class="fas fa-phone"></i> 01611134095</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 MRM Mobile Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Order Slip Modal -->
+    <div class="modal" id="orderSlipModal">
+        <div class="order-slip">
+            <h2>Order Summary</h2>
+            <div class="order-details" id="orderDetails">
+                <!-- Order details loaded by JavaScript -->
+            </div>
+            <div class="delivery-info">
+                <h3>Delivery Information</h3>
+                <p><strong>Address:</strong> খুলনা, বাগেরহাট</p>
+                <p><strong>Delivery Charge:</strong> 130৳ (whole Bangladesh), 70৳ (Bagherhat)</p>
+                <p><strong>Delivery Time:</strong> within Bagherhat 1 day, other districts 1–2 days</p>
+            </div>
+            <div class="order-actions">
+                <button class="btn" id="confirmOrder">Confirm & Send via WhatsApp</button>
+                <button class="btn btn-outline" id="cancelOrder">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="js/cart.js"></script>
+</body>
+</html>
